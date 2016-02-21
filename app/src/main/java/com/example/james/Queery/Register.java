@@ -1,6 +1,7 @@
 package com.example.james.Queery;
 
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -55,12 +56,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bRegister:
-                sendRegistration();
+                new sendRegister().execute();
                 break;
         }
     }
 
-    private Boolean sendRegistration() {
+    class sendRegister extends AsyncTask<Void,Void,Void> {
 
         Boolean complete = false;
         //Socket sock = null;
@@ -68,38 +69,41 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         PrintWriter out;
         BufferedReader in;
 
-        try {
-            //host = InetAddress.getLocalHost();
-            Socket sock = new Socket("192.168.1.190", 491);
-            out = new PrintWriter(sock.getOutputStream(), true);
-            in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
+        protected Void doInBackground(Void... args) {
+            try {
+                //host = InetAddress.getLocalHost();
+                Socket sock = new Socket("10.0.2.2", 4910);
+                out = new PrintWriter(sock.getOutputStream(), true);
+                in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 
-            String command = "addUser, " + getETtext(etUsername) + ", " + getETtext(etPassword) +
-                    ", " + getETtext(etFname) + ", " + getETtext(etLname) + ", " +
-                    getETtext(etEmail) + ", " + getETtext(etAge);
-            out.println(command);
-            Log.d("Register Command", command);
-            String temp;
-            while (in.ready()) {
-                temp = in.readLine();
-                Log.d("Register Command", temp);
-                System.out.println(temp);
-            }
-            sock.close();
-        } catch (UnknownHostException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } finally {
-            /*try {
+                String command = "addUser, " + getETtext(etUsername) + ", " + getETtext(etPassword) +
+                        ", " + getETtext(etFname) + ", " + getETtext(etLname) + ", " +
+                        getETtext(etEmail) + ", " + getETtext(etAge);
+                out.println(command);
+                Log.i("Register Command", command);
+                String temp;
+                while (in.ready()) {
+                    temp = in.readLine();
+                    Log.d("Register Command", temp);
+                    System.out.println(temp);
+                }
                 sock.close();
-            } catch (IOException e) {
+            } catch (UnknownHostException e) {
+                // TODO Auto-generated catch block
                 e.printStackTrace();
-            }*/
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } finally {
+                /*try {
+                    sock.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }*/
+            }
+            //return null;
+            return null;
         }
-        return complete;
     }
 
     /**
