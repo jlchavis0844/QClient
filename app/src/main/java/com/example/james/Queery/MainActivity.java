@@ -16,13 +16,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        startActivity(new Intent(this, Register.class));
+        /*setContentView(R.layout.activity_main);
 
         etUsername = (EditText) findViewById(R.id.etUsername);
         etFname = (EditText) findViewById(R.id.etFname);
         etLname = (EditText) findViewById(R.id.etLname);
         bLogout = (Button) findViewById(R.id.bLogout);
-        bLogout.setOnClickListener(this);
+        bLogout.setOnClickListener(this);*/
     }
 
     @Override
@@ -33,4 +34,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
 }
