@@ -1,4 +1,4 @@
-package com.example.james.qclient;
+package com.example.james.Queery;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
