@@ -6,11 +6,10 @@
     android:background="#ffffff"
     android:layout_width="match_parent"
     android:padding="10dp"
-    android:layout_height="match_parent"
-    style="@style/AppTheme"
-    android:gravity="top|center_vertical">
+    android:layout_height="match_parent">
 
     <ImageView
+        android:layout_marginBottom="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imageView"
@@ -29,33 +28,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-
     <TextView
         android:layout_width="wrap_content"
-        android:text="First Name"
+        android:text="Password"
         android:layout_height="wrap_content" />
 
     <EditText
-        android:id="@+id/etFname"
+        android:id="@+id/etPassword"
         android:layout_marginBottom="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:text="Last Name"
-        android:layout_height="wrap_content" />
-
-    <EditText
-        android:id="@+id/etLname"
-        android:layout_marginBottom="10dp"
+        android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/bLogout"
-        android:text="Logout"
+        android:id="@+id/bLogin"
+        android:text="Login"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tvRegisterLink"
+        android:text="Register Here"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
